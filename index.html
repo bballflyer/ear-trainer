@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interval And Chord Trainer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="trainer" aria-labelledby="app-title">
+        <header class="trainer__header">
+          <div>
+            <p class="eyebrow">Ear training</p>
+            <h1 id="app-title">Interval And Chord Trainer</h1>
+          </div>
+          <div class="score" aria-live="polite">
+            <span id="score">0</span>/<span id="attempts">0</span>
+          </div>
+        </header>
+
+        <div class="controls" aria-label="Training settings">
+          <fieldset>
+            <legend>Mode</legend>
+            <div class="segmented" id="mode-controls">
+              <button class="is-active" type="button" data-mode="interval">Intervals</button>
+              <button type="button" data-mode="chord">Chords</button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Difficulty</legend>
+            <div class="segmented" id="difficulty-controls">
+              <button class="is-active" type="button" data-difficulty="beginner">Beginner</button>
+              <button type="button" data-difficulty="intermediate">Intermediate</button>
+              <button type="button" data-difficulty="advanced">Advanced</button>
+            </div>
+          </fieldset>
+
+          <fieldset id="direction-field">
+            <legend>Direction</legend>
+            <div class="segmented" id="direction-controls">
+              <button type="button" data-direction="ascending">Ascending</button>
+              <button type="button" data-direction="descending">Descending</button>
+              <button class="is-active" type="button" data-direction="both">Both</button>
+            </div>
+          </fieldset>
+        </div>
+
+        <section class="prompt-panel" aria-live="polite">
+          <p class="prompt-label" id="prompt-label">Listen to the two notes.</p>
+          <p class="prompt-title" id="prompt-title">What interval did you hear?</p>
+          <div class="action-row">
+            <button class="primary-button" id="play-button" type="button">Play</button>
+            <button class="secondary-button" id="next-button" type="button" disabled>Next</button>
+          </div>
+          <p class="feedback" id="feedback">Press play to hear your first question.</p>
+        </section>
+
+        <section>
+          <h2 class="answers-heading">Choose an answer</h2>
+          <div class="answer-grid" id="answer-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
