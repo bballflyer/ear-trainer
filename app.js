@@ -45,6 +45,7 @@ const state = {
   score: 0,
   attempts: 0,
   answered: false,
+  autoPlayNext: false,
   audioContext: null,
   activePlayback: null,
 };
@@ -117,6 +118,7 @@ function generateQuestion() {
 function resetSession() {
   state.score = 0;
   state.attempts = 0;
+  state.autoPlayNext = false;
   updateScore();
   generateQuestion();
 }
@@ -327,16 +329,32 @@ elements.directionControls.addEventListener("click", (event) => {
 elements.playButton.addEventListener("click", async () => {
   try {
     await playCurrentQuestion();
+    state.autoPlayNext = true;
+    elements.playButton.textContent = "Replay";
+    setFeedback("Choose the answer you heard.", "");
   } catch (error) {
     console.error(error);
     setFeedback("Audio could not start. Try refreshing the page, then press Play again.", "is-wrong");
   }
-  elements.playButton.textContent = "Replay";
 });
 
-elements.nextButton.addEventListener("click", () => {
+elements.nextButton.addEventListener("click", async () => {
   generateQuestion();
-  elements.playButton.textContent = "Play";
+  if (!state.autoPlayNext) {
+    elements.playButton.textContent = "Play";
+    return;
+  }
+
+  try {
+    await playCurrentQuestion();
+    elements.playButton.textContent = "Replay";
+    setFeedback("Choose the answer you heard.", "");
+  } catch (error) {
+    console.error(error);
+    state.autoPlayNext = false;
+    elements.playButton.textContent = "Play";
+    setFeedback("Audio could not start. Press Play to try again.", "is-wrong");
+  }
 });
 
 updatePromptText();
