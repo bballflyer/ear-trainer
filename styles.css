@@ -1,17 +1,20 @@
 :root {
   color-scheme: light;
-  --bg: #f6f4ee;
+  --bg: #f3f1ec;
   --surface: #ffffff;
-  --surface-strong: #f0efe8;
-  --ink: #202124;
-  --muted: #6a6861;
-  --line: #dedbd1;
-  --accent: #21706d;
-  --accent-strong: #174f4d;
-  --accent-soft: #dcefeb;
-  --wrong: #a43e37;
-  --right: #2f7650;
-  --shadow: 0 20px 60px rgba(32, 33, 36, 0.12);
+  --surface-strong: #efeee9;
+  --surface-warm: #fbfaf7;
+  --ink: #171717;
+  --muted: #6b665d;
+  --line: #d8d3c7;
+  --accent: #b46d2a;
+  --accent-strong: #835019;
+  --accent-soft: #f4e6d6;
+  --secondary: #235f63;
+  --secondary-soft: #dfedeb;
+  --wrong: #a6413b;
+  --right: #2e6f4b;
+  --shadow: 0 20px 60px rgba(23, 23, 23, 0.12);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -25,8 +28,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(120deg, rgba(33, 112, 109, 0.14), transparent 32%),
-    linear-gradient(240deg, rgba(141, 85, 36, 0.12), transparent 36%),
+    repeating-linear-gradient(to bottom, rgba(23, 23, 23, 0.035) 0 1px, transparent 1px 12px) center 17% / 100% 49px no-repeat,
+    linear-gradient(120deg, rgba(180, 109, 42, 0.13), transparent 34%),
+    linear-gradient(240deg, rgba(35, 95, 99, 0.12), transparent 38%),
     var(--bg);
   color: var(--ink);
 }
@@ -55,7 +59,7 @@ button:disabled {
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   box-shadow: var(--shadow);
 }
 
@@ -69,7 +73,7 @@ button:disabled {
 
 .eyebrow {
   margin: 0 0 6px;
-  color: var(--accent);
+  color: var(--secondary);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -89,7 +93,7 @@ h1 {
   padding: 12px 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--surface-strong);
+  background: linear-gradient(180deg, #ffffff, var(--surface-strong));
   font-size: 1.35rem;
   font-weight: 800;
   text-align: center;
@@ -143,7 +147,7 @@ legend {
 
 .segmented button.is-active {
   background: var(--surface);
-  color: var(--accent-strong);
+  color: var(--secondary);
   box-shadow: 0 2px 8px rgba(32, 33, 36, 0.08);
 }
 
@@ -152,7 +156,9 @@ legend {
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fbfaf6;
+  background:
+    repeating-linear-gradient(to bottom, rgba(23, 23, 23, 0.045) 0 1px, transparent 1px 13px) 0 18px / 100% 53px no-repeat,
+    var(--surface-warm);
 }
 
 .prompt-label,
@@ -229,19 +235,19 @@ legend {
 }
 
 .answer-grid button:hover:not(:disabled) {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: var(--secondary);
+  background: var(--secondary-soft);
 }
 
 .answer-grid button.is-correct {
   border-color: var(--right);
-  background: #e3f2e9;
+  background: #e2f0e7;
   color: var(--right);
 }
 
 .answer-grid button.is-wrong {
   border-color: var(--wrong);
-  background: #f8e5e3;
+  background: #f7e4e1;
   color: var(--wrong);
 }
 
